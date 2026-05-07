@@ -1,0 +1,14 @@
+[package]
+name = "traffic-light"
+version = "0.1.0"
+authors = ["red-taxicab <gabriel.lloyd.medlock@gmail.com>"]
+edition = "2024"
+description = "Another single-threaded block asynchronous executor for Rust"
+documentation = "https://docs.rs/traffic-light"
+readme = "README.md"
+repository = "https://github.com/red-taxicab/traffic-light-rs"
+license = "MIT OR Apache-2.0"
+keywords = ["single-threaded", "blocking", "asynchronous", "executor"]
+categories = ["asynchronous"]
+
+[dependencies]
