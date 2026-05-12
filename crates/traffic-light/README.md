@@ -25,7 +25,9 @@ traffic-light = "0.1.0"
 
 ```rust
 use std::{
+    error,
     pin::Pin,
+    result,
     task::{Context, Poll},
     thread::{self, JoinHandle},
     time::{Duration, Instant},
@@ -87,13 +89,13 @@ impl Future for Timer {
     }
 }
 
-fn main() -> std::result::Result<(), Box<dyn std::error::Error>> {
+fn main() -> result::Result<(), Box<dyn error::Error>> {
     Executor::block_on(async {
         Timer::new(Duration::from_secs(5)).await;
 
         println!("Hello, world!");
 
-        Ok::<(), Box<dyn std::error::Error>>(())
+        Ok::<(), Box<dyn error::Error>>(())
     })?;
 
     Ok(())
