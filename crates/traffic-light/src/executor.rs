@@ -3,12 +3,17 @@
 //! # Examples
 //!
 //! ```
+//! use std::{
+//!     error,
+//!     result
+//! };
+//! 
 //! use traffic_light::executor::Executor;
 //!
-//! fn main() -> std::result::Result<(), Box<dyn std::error::Error>> {
+//! fn main() -> result::Result<(), Box<dyn error::Error>> {
 //!     Executor::block_on(async {
 //!         // ...
-//!         Ok::<(), Box<dyn std::error::Error>>(())
+//!         Ok::<(), Box<dyn error::Error>>(())
 //!     })?;
 //!
 //!     Ok(())
@@ -41,15 +46,24 @@ impl Executor {
     /// # Examples
     ///
     /// ```
+    /// # use std::{
+    /// #     error,
+    /// #     result
+    /// # };
+    /// #
     /// use traffic_light::executor::Executor;
     ///
-    /// let x: std::result::Result<(), Box<dyn std::error::Error>> =
+    /// # fn main() -> result::Result<(), Box<dyn error::Error>> {
+    /// let x: result::Result<(), Box<dyn error::Error>> =
     ///     Executor::block_on(async {
     ///         // ...
     ///         Ok(())
     ///     });
     ///
     /// assert!(x.is_ok());
+    /// #
+    /// #     Ok(())
+    /// # }
     /// ```
     pub fn block_on<F: IntoFuture>(f: F) -> F::Output {
         let mut f = pin!(f.into_future());
@@ -69,11 +83,16 @@ impl Executor {
 
 #[cfg(test)]
 mod tests {
+    use std::{
+        error,
+        result,
+    };
+
     use super::*;
 
     #[test]
     fn block_on_result_ok() {
-        let x: std::result::Result<(), Box<dyn std::error::Error>> =
+        let x: result::Result<(), Box<dyn error::Error>> =
             Executor::block_on(async {
                 Ok(())
             });
@@ -83,7 +102,7 @@ mod tests {
 
     #[test]
     fn block_on_result_err() {
-        let x: std::result::Result<(), &str> =
+        let x: result::Result<(), &str> =
             Executor::block_on(async {
                 Err("")
             });

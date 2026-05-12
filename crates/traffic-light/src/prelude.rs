@@ -3,16 +3,21 @@
 //! # Examples
 //!
 //! ```
+//! use std::{
+//!     error,
+//!     result
+//! };
+//!
 //! use traffic_light::prelude::*;
 //!
-//! fn main() -> std::result::Result<(), Box<dyn std::error::Error>> {
+//! fn main() -> result::Result<(), Box<dyn error::Error>> {
 //!     Executor::block_on(async {
 //!         async {
 //!             // ...
-//!             Ok::<(), Box<dyn std::error::Error>>(())
+//!             Ok::<(), Box<dyn error::Error>>(())
 //!         }.block_on()?;
 //!
-//!         Ok::<(), Box<dyn std::error::Error>>(())
+//!         Ok::<(), Box<dyn error::Error>>(())
 //!     })?;
 //!
 //!     Ok(())

@@ -3,6 +3,11 @@
 //! # Examples
 //!
 //! ```
+//! use std::{
+//!     error,
+//!     result
+//! };
+//!
 //! use traffic_light::future::FutureExt as _;
 //!
 //! fn main() -> std::result::Result<(), Box<dyn std::error::Error>> {
@@ -28,15 +33,24 @@ pub trait FutureExt: Future {
     /// # Examples
     ///
     /// ```
+    /// # use std::{
+    /// #     error,
+    /// #     result
+    /// # };
+    /// #
     /// use traffic_light::future::FutureExt as _;
     ///
-    /// let x: std::result::Result<(), Box<dyn std::error::Error>> =
+    /// # fn main() -> result::Result<(), Box<dyn error::Error>> {
+    /// let x: result::Result<(), Box<dyn error::Error>> =
     ///     async {
     ///         // ...
     ///         Ok(())
     ///     }.block_on();
     ///
     /// assert!(x.is_ok());
+    /// #
+    /// #     Ok(())
+    /// # }
     /// ```
     fn block_on(self) -> Self::Output;
 }

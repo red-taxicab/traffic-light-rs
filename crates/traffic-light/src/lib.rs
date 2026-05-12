@@ -3,12 +3,17 @@
 //! # Examples
 //!
 //! ```
+//! use std::{
+//!     error,
+//!     result
+//! };
+//!
 //! use traffic_light::future::FutureExt as _;
 //!
-//! fn main() -> std::result::Result<(), Box<dyn std::error::Error>> {
+//! fn main() -> result::Result<(), Box<dyn error::Error>> {
 //!     async {
 //!         // ...
-//!         Ok::<(), Box<dyn std::error::Error>>(())
+//!         Ok::<(), Box<dyn error::Error>>(())
 //!     }.block_on()?;
 //!
 //!     Ok(())
@@ -16,12 +21,17 @@
 //! ```
 //!
 //! ```
+//! use std::{
+//!     error,
+//!     result
+//! };
+//!
 //! use traffic_light::executor::Executor;
 //!
-//! fn main() -> std::result::Result<(), Box<dyn std::error::Error>> {
+//! fn main() -> result::Result<(), Box<dyn error::Error>> {
 //!     Executor::block_on(async {
 //!         // ...
-//!         Ok::<(), Box<dyn std::error::Error>>(())
+//!         Ok::<(), Box<dyn error::Error>>(())
 //!     })?;
 //!
 //!     Ok(())
