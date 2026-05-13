@@ -32,6 +32,7 @@ impl Timer {
 impl Future for Timer {
     type Output = ();
 
+    #[rustfmt::skip]
     fn poll(mut self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {
         match &self.state {
             State::Idle => {

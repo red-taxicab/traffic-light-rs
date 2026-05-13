@@ -30,6 +30,7 @@ impl Timer {
 impl Future for Timer {
     type Output = ();
 
+    #[rustfmt::skip]
     fn poll(mut self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {
         match &self.state {
             State::Idle => {
@@ -46,7 +47,7 @@ impl Future for Timer {
                 self.state = State::Spawned(join_handle);
 
                 Poll::Pending
-            }
+            },
             State::Spawned(join_handle) => {
                 if join_handle.is_finished() {
                     self.state = State::Completed;
@@ -55,7 +56,7 @@ impl Future for Timer {
                 } else {
                     Poll::Pending
                 }
-            }
+            },
             State::Completed => Poll::Ready(()),
         }
     }

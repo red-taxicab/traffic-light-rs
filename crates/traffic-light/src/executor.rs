@@ -7,7 +7,7 @@
 //!     error,
 //!     result
 //! };
-//! 
+//!
 //! use traffic_light::executor::Executor;
 //!
 //! fn main() -> result::Result<(), Box<dyn error::Error>> {
@@ -83,6 +83,7 @@ impl Executor {
 
 #[cfg(test)]
 mod tests {
+    #[rustfmt::skip]
     use std::{
         error,
         result,
@@ -90,6 +91,7 @@ mod tests {
 
     use super::*;
 
+    #[rustfmt::skip]
     #[test]
     fn block_on_result_ok() {
         let x: result::Result<(), Box<dyn error::Error>> =
@@ -100,6 +102,7 @@ mod tests {
         assert!(x.is_ok());
     }
 
+    #[rustfmt::skip]
     #[test]
     fn block_on_result_err() {
         let x: result::Result<(), &str> =

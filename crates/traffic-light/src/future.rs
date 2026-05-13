@@ -63,11 +63,18 @@ impl<F: Future> FutureExt for F {
 
 #[cfg(test)]
 mod tests {
+    #[rustfmt::skip]
+    use std::{
+        error,
+        result,
+    };
+
     use super::*;
 
+    #[rustfmt::skip]
     #[test]
     fn block_on_result_ok() {
-        let x: std::result::Result<(), Box<dyn std::error::Error>> =
+        let x: result::Result<(), Box<dyn error::Error>> =
             async {
                 Ok(())
             }.block_on();
@@ -75,9 +82,10 @@ mod tests {
         assert!(x.is_ok());
     }
 
+    #[rustfmt::skip]
     #[test]
     fn block_on_result_err() {
-        let x: std::result::Result<(), &str> =
+        let x: result::Result<(), &str> =
             async {
                 Err("")
             }.block_on();

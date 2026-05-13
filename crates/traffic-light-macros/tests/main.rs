@@ -1,3 +1,4 @@
+#[rustfmt::skip]
 use std::{
     error,
     result,
