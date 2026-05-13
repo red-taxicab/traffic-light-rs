@@ -11,12 +11,26 @@
 //! use traffic_light::prelude::*;
 //!
 //! fn main() -> result::Result<(), Box<dyn error::Error>> {
-//!     Executor::block_on(async {
-//!         async {
-//!             // ...
-//!             Ok::<(), Box<dyn error::Error>>(())
-//!         }.block_on()?;
+//!     async {
+//!         // ...
+//!         Ok::<(), Box<dyn error::Error>>(())
+//!     }.block_on()?;
 //!
+//!     Ok(())
+//! }
+//! ```
+//! 
+//! ```
+//! use std::{
+//!     error,
+//!     result
+//! };
+//!
+//! use traffic_light::prelude::*;
+//!
+//! fn main() -> result::Result<(), Box<dyn error::Error>> {
+//!     Executor::block_on(async {
+//!         // ...
 //!         Ok::<(), Box<dyn error::Error>>(())
 //!     })?;
 //!

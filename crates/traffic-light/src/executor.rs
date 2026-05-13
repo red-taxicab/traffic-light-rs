@@ -69,7 +69,7 @@ impl Executor {
         let mut f = pin!(f.into_future());
 
         WAKER.with(|waker| {
-            let mut cx = Context::from_waker(&waker);
+            let mut cx = Context::from_waker(waker);
 
             loop {
                 match f.as_mut().poll(&mut cx) {

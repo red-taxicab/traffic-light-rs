@@ -1,6 +1,6 @@
 [package]
 name = "traffic-light"
-version = "0.2.0"
+version = "0.2.1"
 authors = ["red-taxicab <gabriel.lloyd.medlock@gmail.com>"]
 edition = "2024"
 description = "Another single-threaded blocking asynchronous executor for Rust."
