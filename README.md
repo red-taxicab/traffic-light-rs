@@ -4,7 +4,7 @@
 [<img alt="docs.rs" src="https://img.shields.io/badge/docs.rs-traffic--light-66c2a5?style=for-the-badge&labelColor=555555&logo=docs.rs" height="20">](https://docs.rs/traffic-light)
 [<img alt="github" src="https://img.shields.io/badge/github-red--taxicab/traffic--light--rs-8da0cb?style=for-the-badge&labelColor=555555&logo=github" height="20">](https://github.com/red-taxicab/traffic-light-rs)
 
-Another single-threaded block asynchronous executor for Rust.
+Another single-threaded blocking asynchronous executor for Rust.
 
 ## Examples
 
