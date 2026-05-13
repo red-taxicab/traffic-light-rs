@@ -18,8 +18,6 @@ use std::{
     time::{Duration, Instant},
 };
 
-use traffic_light::executor::Executor;
-
 enum State {
     Idle,
     Spawned(JoinHandle<()>),
@@ -74,19 +72,20 @@ impl Future for Timer {
     }
 }
 
-fn main() -> result::Result<(), Box<dyn error::Error>> {
-    Executor::block_on(async {
-        Timer::new(Duration::from_secs(5)).await;
+#[traffic_light::main]
+async fn main() -> result::Result<(), Box<dyn error::Error>> {
+    Timer::new(Duration::from_secs(5)).await;
 
-        println!("Hello, world!");
-
-        Ok::<(), Box<dyn error::Error>>(())
-    })?;
+    println!("Hello, world!");
 
     Ok(())
 }
 
 ```
+
+## Features
+
+- `macros` adds `[traffic_light::main]`
 
 ## License
 

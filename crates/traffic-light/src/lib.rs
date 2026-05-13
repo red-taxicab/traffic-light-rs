@@ -42,3 +42,6 @@ pub mod executor;
 pub mod future;
 pub mod prelude;
 pub(crate) mod thread;
+
+#[cfg(feature = "macros")]
+pub use traffic_light_macros::main;

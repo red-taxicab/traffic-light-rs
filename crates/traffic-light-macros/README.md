@@ -1,27 +1,21 @@
-# traffic-light
+# traffic-light-macros
 
-[<img alt="crates.io" src="https://img.shields.io/crates/v/traffic-light.svg?style=for-the-badge&color=fc8d62&logo=rust" height="20">](https://crates.io/crates/traffic-light)
-[<img alt="docs.rs" src="https://img.shields.io/badge/docs.rs-traffic--light-66c2a5?style=for-the-badge&labelColor=555555&logo=docs.rs" height="20">](https://docs.rs/traffic-light)
+[<img alt="crates.io" src="https://img.shields.io/crates/v/traffic-light.svg?style=for-the-badge&color=fc8d62&logo=rust" height="20">](https://crates.io/crates/traffic-light-macros)
+[<img alt="docs.rs" src="https://img.shields.io/badge/docs.rs-traffic--light-66c2a5?style=for-the-badge&labelColor=555555&logo=docs.rs" height="20">](https://docs.rs/traffic-light-macros)
 [<img alt="github" src="https://img.shields.io/badge/github-red--taxicab/traffic--light--rs-8da0cb?style=for-the-badge&labelColor=555555&logo=github" height="20">](https://github.com/red-taxicab/traffic-light-rs)
 
-Another single-threaded blocking asynchronous executor for Rust.
+Macros for another single-threaded blocking asynchronous executor in Rust.
 
-## Install
+## Examples
 
-Run the following Cargo command in your project directory:
-
-```sh
-cargo add traffic-light
-```
-
-Or add the following line to your `Cargo.toml`:
+`Cargo.toml`
 
 ```toml
 [dependencies]
-traffic-light = "0.1.0"
+traffic-light = { version = "*", features = ["macros"] }
 ```
 
-## Examples
+`src/main.rs`
 
 ```rust
 use std::{
@@ -97,10 +91,6 @@ async fn main() -> result::Result<(), Box<dyn error::Error>> {
 }
 
 ```
-
-## Features
-
-- `macros` adds `[traffic_light::main]`
 
 ## License
 
