@@ -1,6 +1,6 @@
 [package]
 name = "traffic-light-macros"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["red-taxicab <gabriel.lloyd.medlock@gmail.com>"]
 edition = "2024"
 description = "Macros for another single-threaded blocking asynchronous executor in rust."

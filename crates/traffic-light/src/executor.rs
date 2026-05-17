@@ -3,10 +3,7 @@
 //! # Examples
 //!
 //! ```
-//! use std::{
-//!     error,
-//!     result
-//! };
+//! use std::{error, result};
 //!
 //! use traffic_light::executor::Executor;
 //!
@@ -46,10 +43,7 @@ impl Executor {
     /// # Examples
     ///
     /// ```
-    /// # use std::{
-    /// #     error,
-    /// #     result
-    /// # };
+    /// # use std::{error,result};
     /// #
     /// use traffic_light::executor::Executor;
     ///
@@ -81,9 +75,9 @@ impl Executor {
     }
 }
 
+#[rustfmt::skip]
 #[cfg(test)]
 mod tests {
-    #[rustfmt::skip]
     use std::{
         error,
         result,
@@ -91,7 +85,6 @@ mod tests {
 
     use super::*;
 
-    #[rustfmt::skip]
     #[test]
     fn block_on_result_ok() {
         let x: result::Result<(), Box<dyn error::Error>> =
@@ -102,7 +95,6 @@ mod tests {
         assert!(x.is_ok());
     }
 
-    #[rustfmt::skip]
     #[test]
     fn block_on_result_err() {
         let x: result::Result<(), &str> =

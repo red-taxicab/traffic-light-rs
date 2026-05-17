@@ -1,8 +1,4 @@
-#[rustfmt::skip]
-use std::{
-    error,
-    result,
-};
+use std::{error, result};
 
 #[rustfmt::skip]
 #[traffic_light_macros::test]

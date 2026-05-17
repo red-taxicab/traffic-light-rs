@@ -3,10 +3,7 @@
 //! # Examples
 //!
 //! ```
-//! use std::{
-//!     error,
-//!     result
-//! };
+//! use std::{error,result};
 //!
 //! use traffic_light::future::FutureExt as _;
 //!
@@ -33,10 +30,7 @@ pub trait FutureExt: Future {
     /// # Examples
     ///
     /// ```
-    /// # use std::{
-    /// #     error,
-    /// #     result
-    /// # };
+    /// # use std::{error,result};
     /// #
     /// use traffic_light::future::FutureExt as _;
     ///
@@ -61,17 +55,13 @@ impl<F: Future> FutureExt for F {
     }
 }
 
+#[rustfmt::skip]
 #[cfg(test)]
 mod tests {
-    #[rustfmt::skip]
-    use std::{
-        error,
-        result,
-    };
+    use std::{error, result};
 
     use super::*;
 
-    #[rustfmt::skip]
     #[test]
     fn block_on_result_ok() {
         let x: result::Result<(), Box<dyn error::Error>> =
@@ -82,7 +72,6 @@ mod tests {
         assert!(x.is_ok());
     }
 
-    #[rustfmt::skip]
     #[test]
     fn block_on_result_err() {
         let x: result::Result<(), &str> =

@@ -3,10 +3,7 @@
 //! # Examples
 //!
 //! ```
-//! use std::{
-//!     error,
-//!     result
-//! };
+//! use std::{error,result};
 //!
 //! use traffic_light::future::FutureExt as _;
 //!
@@ -21,10 +18,7 @@
 //! ```
 //!
 //! ```
-//! use std::{
-//!     error,
-//!     result
-//! };
+//! use std::{error,result};
 //!
 //! use traffic_light::executor::Executor;
 //!
