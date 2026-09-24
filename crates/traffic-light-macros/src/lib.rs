@@ -17,9 +17,9 @@
 
 use proc_macro::TokenStream;
 use quote::quote;
-use syn::{ItemFn, parse_macro_input, parse_quote};
+use syn::{ItemFn, parse::Nothing, parse_macro_input, parse_quote};
 
-/// Expands `async fn main() {}` into a call to [`Executor::block_on`]
+/// Expands `async fn main() {}` into a call to [`Executor::block_on`].
 ///
 /// # Examples
 ///
@@ -38,27 +38,40 @@ use syn::{ItemFn, parse_macro_input, parse_quote};
 ///
 /// # Expansion
 ///
-/// ```
-/// fn main() {
+/// ```ignore
+/// fn main() -> result::Result<(), Box<dyn error::Error>> {
 ///     ::traffic_light::executor::Executor::block_on(async {
 ///         // ...
+///         Ok(())
 ///     })
 /// }
 /// ```
 ///
-/// [`Executor::block_on`]: ../traffic-light/executor/struct.Executor.html#method.block_on
+/// [`Executor::block_on`]: ../traffic_light/executor/struct.Executor.html#method.block_on
 #[proc_macro_attribute]
-pub fn main(_attr: TokenStream, item: TokenStream) -> TokenStream {
+pub fn main(attr: TokenStream, item: TokenStream) -> TokenStream {
+    parse_macro_input!(attr as Nothing);
     let item = parse_macro_input!(item as ItemFn);
+
+    if item.sig.ident != "main" {
+        return syn::Error::new_spanned(
+            &item.sig.ident,
+            "the `#[traffic_light::main]` attribute may only be used on `main`",
+        )
+        .to_compile_error()
+        .into();
+    }
 
     expand_async_fn(item)
 }
 
 #[proc_macro_attribute]
-pub fn test(_attr: TokenStream, item: TokenStream) -> TokenStream {
+pub fn test(attr: TokenStream, item: TokenStream) -> TokenStream {
+    parse_macro_input!(attr as Nothing);
     let mut item = parse_macro_input!(item as ItemFn);
 
-    item.attrs.push(parse_quote! { #[test] });
+    item.attrs
+        .push(parse_quote! { #[::std::prelude::v1::test] });
 
     expand_async_fn(item)
 }
@@ -66,16 +79,20 @@ pub fn test(_attr: TokenStream, item: TokenStream) -> TokenStream {
 fn expand_async_fn(item: ItemFn) -> TokenStream {
     let ItemFn {
         attrs,
+        vis,
         mut sig,
         block,
-        ..
     } = item;
 
-    sig.asyncness = None;
+    if sig.asyncness.take().is_none() {
+        return syn::Error::new_spanned(sig.fn_token, "function must be `async`")
+            .to_compile_error()
+            .into();
+    }
 
     let expanded = quote! {
         #(#attrs)*
-        #sig {
+        #vis #sig {
             ::traffic_light::executor::Executor::block_on(async #block)
         }
     };

@@ -7,7 +7,7 @@ async fn block_on_result_ok() {
         Ok(())
     }.await;
 
-    assert!(x.is_ok())
+    assert!(x.is_ok());
 }
 
 #[rustfmt::skip]
@@ -17,5 +17,5 @@ async fn block_on_result_err() {
         Err("")
     }.await;
 
-    assert!(x.is_err())
+    assert!(x.is_err());
 }

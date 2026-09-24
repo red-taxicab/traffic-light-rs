@@ -20,6 +20,26 @@
 use crate::executor::Executor;
 
 /// An extension trait for [`Future`] that provides blocking.
+///
+/// # Examples
+///
+/// ```
+/// # use std::{error,result};
+/// #
+/// use traffic_light::future::FutureExt as _;
+///
+/// # fn main() -> result::Result<(), Box<dyn error::Error>> {
+/// let x: result::Result<(), Box<dyn error::Error>> =
+///     async {
+///         // ...
+///         Ok(())
+///     }.block_on();
+///
+/// assert!(x.is_ok());
+/// #
+/// #     Ok(())
+/// # }
+/// ```
 pub trait FutureExt: Future {
     /// Blocks the current thread on this future.
     ///

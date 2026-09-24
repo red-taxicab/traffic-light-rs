@@ -1,4 +1,4 @@
-//! The traffic-light Executor.
+//! [`Executor`].
 //!
 //! # Examples
 //!
@@ -27,10 +27,30 @@ use std::{
 use crate::thread::Thread;
 
 thread_local! {
-    static WAKER: Waker = Waker::from(Arc::new(Thread::default()));
+    static WAKER: Waker = Waker::from(Arc::new(Thread::current()));
 }
 
-/// The traffic-light Executor.
+/// Executor.
+///
+/// # Examples
+///
+/// ```
+/// # use std::{error,result};
+/// #
+/// use traffic_light::executor::Executor;
+///
+/// # fn main() -> result::Result<(), Box<dyn error::Error>> {
+/// let x: result::Result<(), Box<dyn error::Error>> =
+///     Executor::block_on(async {
+///         // ...
+///         Ok(())
+///     });
+///
+/// assert!(x.is_ok());
+/// #
+/// #     Ok(())
+/// # }
+/// ```
 pub struct Executor;
 
 impl Executor {

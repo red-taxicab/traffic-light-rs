@@ -1,3 +1,6 @@
-target
-Cargo.lock
+/.vscode
+.gitignore
+!/.gitignore
+/Cargo.lock
+/target/
 .DS_Store

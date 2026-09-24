@@ -1,9 +1,9 @@
 [package]
 name = "traffic-light-macros"
-version = "0.1.2"
+version = "1.0.0"
 authors = ["red-taxicab <gabriel.lloyd.medlock@gmail.com>"]
 edition = "2024"
-description = "Macros for another single-threaded blocking asynchronous executor in rust."
+description = "Macros for another single-threaded blocking asynchronous executor in Rust."
 documentation = "https://docs.rs/traffic-light-macros"
 readme = "README.md"
 repository = "https://github.com/red-taxicab/traffic-light-rs"
@@ -19,4 +19,4 @@ quote = "1.0.45"
 syn = { version = "2.0.117", features = ["full"] }
 
 [dev-dependencies]
-traffic-light = { path = "../traffic-light", features = ["macros"] }
+traffic-light = { path = "../traffic-light" }

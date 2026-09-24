@@ -1,9 +1,9 @@
 use std::{sync::Arc, task::Wake};
 
-pub(crate) struct Thread(std::thread::Thread);
+pub struct Thread(std::thread::Thread);
 
-impl Default for Thread {
-    fn default() -> Self {
+impl Thread {
+    pub(crate) fn current() -> Self {
         Self(std::thread::current())
     }
 }
